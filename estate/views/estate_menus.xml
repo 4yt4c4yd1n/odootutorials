@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="estate_property_search" model="ir.ui.view">
+        <field name="name">estate_property.search</field>
+        <field name="model">estate_property</field>
+        <field name="arch" type="xml">
+            <search string="Tests">
+                <field name="name"/>
+                <field name="property_type_id"/>
+                <field name="last_seen"/>
+                <field name="bedrooms"/>
+                <field name="expected_price"/>
+                <field name="living_area"/>
+                <field name="facades"/>
+                <filter name="available" string="Available" domain="['|',('status', '=', 'OfferReceieved'),('status', '=', 'New')]" />
+                <filter name="postcode" string="Postcode" domain="[]" context="{'group_by': 'postcode'}"/>
+                <filter name="postcode" string="Property Type" domain="[]" context="{'group_by': 'property_type_id'}"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="estate_property_list" model="ir.ui.view">
+        <field name="name">estate_property.tree</field>
+        <field name="model">estate_property</field>
+        <field name="arch" type="xml">
+            <list string="Tests" 
+                                decoration-success="status=='OfferReceieved' or status=='Offer Accepted'"
+                                decoration-bf="status=='Offer Accepted'"
+                                decoration-muted="status=='Sold'"
+             >
+                <field name="name"/>
+                <field name="property_type_id"/>
+                <field name="postcode"/>
+                <field name="bedrooms"/>
+                <field name="living_area"/>
+                <field name="expected_price"/>
+                <field name="selling_price"/>
+                <field name="last_seen"/>
+            </list>
+        </field>
+    </record>
+
+    <menuitem id="test_menu_root" name="Estate">
+        <menuitem id="test_first_level_menu" name="Advertisements">
+            <menuitem id="test_model_menu_action" action="test_model_action"/>
+        </menuitem>
+    </menuitem>
+</odoo>

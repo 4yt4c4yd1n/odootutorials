@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <menuitem id="test_first_level" name="Settings" parent="test_menu_root">
+            <menuitem id="property_type_menu" action="property_type_action"/>
+    </menuitem>
+
+    <record id="estate_types_form" model="ir.ui.view">
+        <field name="name">estate_property_type.form</field>
+        <field name="model">estate_property_type</field>
+        <field name="arch" type="xml">
+            <form string="Tests">
+                <div style="font-size:64px;font-weight:bold;color:#000000"><field name="name"/></div>
+                <notebook>
+                    <page string="Properties">
+                        <field name="property_ids">
+                            <list>
+                                <field name="sequence" widget="handle"/>
+                                <field name="name"/>
+                                <field name="expected_price"/>
+                                <field name="status"/>
+                            </list>
+                        </field>
+                    </page>
+                </notebook>
+
+            </form>
+        </field>
+    </record>
+
+
+    <record id="property_type_action" model="ir.actions.act_window">
+        <field name="name">Property Types</field>
+        <field name="res_model">estate_property_type</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+</odoo>

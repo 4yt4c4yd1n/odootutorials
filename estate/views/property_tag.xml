@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <menuitem id="property_tag_menu" parent="test_first_level" action="property_tag_action"/>
+
+    <record id="property_tag_action" model="ir.actions.act_window">
+        <field name="name">Property Tags</field>
+        <field name="res_model">estate_property_tag</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+</odoo>
